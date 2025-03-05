@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Resume">
+    <title>Faiyaz Choudhury - The Desert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4B95E5, #3B7DD3);
+            min-height: 100vh;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .resource-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, rgba(45, 54, 69, 0.9), rgba(30, 36, 46, 0.9));
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            border: 3px solid #FFD700;
+            color: white;
+            background-position: right 20px top 50%;
+            background-size: 80px;
+            padding-right: 30px;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: #FFA500;
+            background-size: 90px;
+        }
+
+        .brick-card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.95), rgba(92, 0, 0, 0.95));
+        }
+
+        .stone-card {
+            background: linear-gradient(135deg, rgba(74, 74, 74, 0.95), rgba(45, 45, 45, 0.95));
+        }
+
+        .sheep-card {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.95), rgba(27, 94, 32, 0.95));
+        }
+
+        .wood-card {
+            background: linear-gradient(135deg, rgba(93, 64, 55, 0.95), rgba(62, 39, 35, 0.95));
+        }
+
+        .wheat-card {
+            background: linear-gradient(135deg, rgba(249, 168, 37, 0.95), rgba(245, 127, 23, 0.95));
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2),
+                         0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            padding: 10px;
+            border: 3px solid #FF4444;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #FFD700;
+            margin: 10px auto;
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .resource-list li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .resource-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dev-card {
+            background: linear-gradient(135deg, #673ab7, #4a1a9e);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 3px solid #FF4444;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .victory-point {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #673ab7;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #FF4444;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #673ab7, #4a1a9e);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 40px;
+            border: 3px solid #FFD700;
+            line-height: 1.6;
+        }
+
+        /* Add hexagon and decoration styles */
+        .background-hexagons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hexagon {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            box-shadow: 
+                inset 0 0 15px rgba(255, 255, 255, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .road {
+            width: 60px;
+            height: 10px;
+            background: white;
+            position: absolute;
+            opacity: 0.15;
+            transform: rotate(var(--rotation, 0deg));
+            transition: all 0.3s ease;
+            animation: roadGlow 4s infinite;
+        }
+
+        .port {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: portPulse 3s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(30deg); }
+            50% { transform: translateY(-20px) rotate(30deg); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0) rotate(-30deg); }
+            50% { transform: translateY(-20px) rotate(-30deg); }
+        }
+
+        @keyframes roadGlow {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        @keyframes portPulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        /* Add these new styles */
+        .catan-board {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.15;
+            z-index: -2;
+            pointer-events: none;
+            width: 800px;
+            height: 800px;
+            background-image: url('image/catan-board.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: saturate(0.8) brightness(1.2);
+        }
+
+        /* Update floating cards styles for even more dramatic animations */
+        .floating-cards-left, .floating-cards {
+            position: fixed;
+            top: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            z-index: 1;
+        }
+
+        .floating-cards-left {
+            left: 40px;
+            transform: translateY(-50%) perspective(1000px) rotateY(10deg);
+        }
+
+        .floating-cards {
+            right: 40px;
+            transform: translateY(-50%) perspective(1000px) rotateY(-10deg);
+        }
+
+        .catan-card {
+            width: 100px;
+            height: 150px;
+            border-radius: 12px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(255, 215, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+            opacity: 0.85;
+            object-fit: contain;
+            animation: cardFloat 8s ease-in-out infinite;
+            animation-delay: var(--delay);
+            filter: brightness(1.1) contrast(1.1) saturate(1.2);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            transform-style: preserve-3d;
+        }
+
+        .catan-card:hover {
+            transform: scale(1.4) rotate(0deg) translateZ(50px) !important;
+            opacity: 1;
+            z-index: 10;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 60px rgba(255, 215, 0, 0.4);
+            border: 4px solid rgba(255, 215, 0, 0.8);
+            filter: brightness(1.3) contrast(1.2) saturate(1.4);
+        }
+
+        /* More dramatic floating animation */
+        @keyframes cardFloat {
+            0% {
+                transform: translateY(-50px) translateX(0px) rotate(var(--rotate, 8deg)) translateZ(0);
+                filter: brightness(1) contrast(1) saturate(1.2);
+            }
+            25% {
+                transform: translateY(-20px) translateX(20px) rotate(var(--rotate, -5deg)) translateZ(30px);
+                filter: brightness(1.2) contrast(1.1) saturate(1.3);
+            }
+            50% {
+                transform: translateY(50px) translateX(0px) rotate(var(--rotate, 8deg)) translateZ(0);
+                filter: brightness(1) contrast(1) saturate(1.2);
+            }
+            75% {
+                transform: translateY(-20px) translateX(-20px) rotate(var(--rotate, -5deg)) translateZ(30px);
+                filter: brightness(1.2) contrast(1.1) saturate(1.3);
+            }
+            100% {
+                transform: translateY(-50px) translateX(0px) rotate(var(--rotate, 8deg)) translateZ(0);
+                filter: brightness(1) contrast(1) saturate(1.2);
+            }
+        }
+
+        /* Enhanced glow effect */
+        .catan-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg, 
+                rgba(255, 255, 255, 0.2), 
+                transparent 30%,
+                rgba(255, 215, 0, 0.1) 90%
+            );
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .catan-card:hover::after {
+            opacity: 1;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Add styles for the new card types */
+        .robber-card {
+            width: 80px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.85;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(1.1) contrast(1.1);
+            animation: cardFloat 8s ease-in-out infinite;
+        }
+
+        .robber-left {
+            left: -60px;
+            animation-delay: 0.3s;
+            transform: rotate(-5deg);
+        }
+
+        .robber-right {
+            right: -60px;
+            animation-delay: 0.6s;
+            transform: rotate(5deg);
+        }
+
+        .lr-card {
+            width: 80px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.85;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(1.1) contrast(1.1);
+            animation: cardFloat 8s ease-in-out infinite;
+        }
+
+        .lr-left {
+            left: -60px;
+            animation-delay: 1.2s;
+            transform: rotate(-5deg);
+        }
+
+        .lr-right {
+            right: -60px;
+            animation-delay: 1.5s;
+            transform: rotate(5deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="catan-board"></div>
+    <div class="background-hexagons">
+        <!-- Hexagons -->
+        <div class="hexagon" style="left: 10%; top: 15%; animation: float 3s infinite;"></div>
+        <div class="hexagon" style="left: 75%; top: 20%; animation: floatReverse 2s infinite;"></div>
+        <div class="hexagon" style="left: 25%; top: 65%; animation: float 2.5s infinite;"></div>
+        <div class="hexagon" style="left: 85%; top: 70%; animation: floatReverse 3s infinite;"></div>
+        <div class="hexagon" style="left: 45%; top: 85%; animation: float 2s infinite;"></div>
+        <div class="hexagon" style="left: 5%; top: 45%; animation: floatReverse 2.5s infinite;"></div>
+        
+        <!-- Roads -->
+        <div class="road" style="top: 25%; left: 20%; --rotation: 45deg;"></div>
+        <div class="road" style="top: 45%; right: 25%; --rotation: -30deg;"></div>
+        <div class="road" style="bottom: 30%; left: 30%; --rotation: 15deg;"></div>
+        <div class="road" style="top: 75%; right: 15%; --rotation: 60deg;"></div>
+        
+        <!-- Ports -->
+        <div class="port" style="top: 10%; right: 10%;"></div>
+        <div class="port" style="bottom: 20%; left: 5%;"></div>
+        <div class="port" style="top: 50%; right: 5%;"></div>
+    </div>
+    <div class="floating-cards-left">
+        <img src="image/brick.png" class="catan-card" style="--delay: 0s; --rotate: 12deg;">
+        <img src="image/brick.png" class="catan-card" style="--delay: 0.4s; --rotate: -8deg;">
+        <img src="image/ore.png" class="catan-card" style="--delay: 0.8s; --rotate: -12deg;">
+        <img src="image/ore.png" class="catan-card" style="--delay: 1.2s; --rotate: 8deg;">
+    </div>
+    <div class="floating-cards">
+        <img src="image/sheep.png" class="catan-card" style="--delay: 1.6s; --rotate: -12deg;">
+        <img src="image/sheep.png" class="catan-card" style="--delay: 2.0s; --rotate: 8deg;">
+        <img src="image/wood.png" class="catan-card" style="--delay: 2.4s; --rotate: 12deg;">
+        <img src="image/wood.png" class="catan-card" style="--delay: 2.8s; --rotate: -8deg;">
+        <img src="image/wheat.png" class="catan-card" style="--delay: 3.2s; --rotate: -12deg;">
+        <img src="image/wheat.png" class="catan-card" style="--delay: 3.6s; --rotate: 8deg;">
+    </div>
+    <div class="resume-container">
+        <h1 class="section-title" style="position: relative;">
+            <img src="image/robber.png" class="robber-card robber-left">
+            Faiyaz Choudhury
+            <img src="image/robber.png" class="robber-card robber-right">
+        </h1>
+        <div class="contact-info" style="text-align: center; color: white; margin-bottom: 30px;">
+            <p>Mississauga, ON | <a href="https://www.linkedin.com/in/faiyaz-choudhury-09527722b/" target="_blank" style="color: #FFD700; text-decoration: none; transition: all 0.3s ease;">LinkedIn</a></p>
+            <p>416.858.1385 | faiyazachoudhury@gmail.com</p>
+        </div>
+
+        <div class="intro-card">
+            <p>Data analyst and research professional with expertise in impact assessment and digital transformation. Skilled at translating complex data into actionable insights that drive strategic decision-making. Proven ability to establish productive stakeholder relationships and optimize digital platforms to enhance organizational efficiency and user experience.</p>
+        </div>
+
+        <h2 class="section-title" style="position: relative;">
+            <img src="image/lr.png" class="lr-card lr-left">
+            Professional Experience
+            <img src="image/lr.png" class="lr-card lr-right">
+        </h2>
+        <div class="resource-section">
+            <div class="resource-card brick-card">
+                <div class="resource-title">Data Analyst</div>
+                <p style="color: #FFD700;">PLC Group | Mississauga, ON | 2023</p>
+                <ul class="resource-list">
+                    <li>Managed trade show logistics for international events including MWC Vegas 2023 and Africa Con 2023</li>
+                    <li>Established relationships with government officials for Canada Pavilion participation</li>
+                    <li>Streamlined CRM platforms including HubSpot and Infotelligent</li>
+                    <li>Led website revamping initiative improving user experience</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card stone-card">
+                <div class="resource-title">Impact Assessment Specialist</div>
+                <p style="color: #FFD700;">Yunus Centre | Dhaka, Bangladesh (Remote) | 2021</p>
+                <ul class="resource-list">
+                    <li>Developed impact assessment frameworks for social business projects</li>
+                    <li>Facilitated virtual workshops reaching 200+ entrepreneurs across 15 countries</li>
+                    <li>Created content for social media and monthly newsletter</li>
+                    <li>Analyzed microfinance program effectiveness during COVID-19</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card sheep-card">
+                <div class="resource-title">Lead Research Analyst</div>
+                <p style="color: #FFD700;">Sorting Hat | Toronto, ON | 2020-2021</p>
+                <ul class="resource-list">
+                    <li>Conducted user testing for educational technology platforms</li>
+                    <li>Implemented data analytics to increase lead generation</li>
+                    <li>Designed and executed A/B testing scenarios</li>
+                    <li>Analyzed user behavior patterns for learning algorithms</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="position: relative;">
+            <img src="image/lr.png" class="lr-card lr-left">
+            Skills & Expertise
+            <img src="image/lr.png" class="lr-card lr-right">
+        </h2>
+        <div class="resource-section">
+            <div class="resource-card wood-card">
+                <div class="resource-title">Technical Skills</div>
+                <ul class="resource-list">
+                    <li>User research methodologies</li>
+                    <li>A/B testing</li>
+                    <li>Microsoft Office Suite</li>
+                    <li>Google Workspace</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card wheat-card">
+                <div class="resource-title">Specialized Skills</div>
+                <ul class="resource-list">
+                    <li>AI implementation</li>
+                    <li>Prompt engineering</li>
+                    <li>Digital platform transformation</li>
+                    <li>Data analytics</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dev-card">
+            <div class="victory-point">VP</div>
+            <div class="resource-title">Education</div>
+            <div style="margin-top: 20px;">
+                <h3 style="color: #FFD700;">Bachelor of Science in Data Science</h3>
+                <p>Wilfrid Laurier University</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
